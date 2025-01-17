@@ -42,19 +42,19 @@ namespace HPSpells.BusinessLayer.Services
 
         public async Task UpsertAsync(SpellRequest request)
         {
-            Spell spell = _mapper.Map<Spell>(request);
+            Spell requestSpell = _mapper.Map<Spell>(request);
 
-            bool exists = await _spellRepository.ExistsSpellAsync(spell.Name);
-            if (exists)
+            Spell? spell = await _spellRepository.GetSpellByNameAsync(requestSpell.Name);
+            if (spell is null)
             {
-                await _spellRepository.UpdateAsync(spell);
+                await _spellRepository.InsertAsync(requestSpell);
             }
             else
             {
-                await _spellRepository.InsertAsync(spell);
+                spell.Name = requestSpell.Name;
+                spell.Description = requestSpell.Description;
+                await _spellRepository.UpdateAsync(spell);
             }
-
-            //await _spellRepository.UpsertAsync(spell);
 
             _cache.Remove("GetAllSpells");
         }

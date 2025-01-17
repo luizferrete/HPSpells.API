@@ -18,9 +18,9 @@ namespace HPSpells.DataAccessLayer.Repositories
         {
         }
 
-        public async Task<bool> ExistsSpellAsync(string spellName)
+        public async Task<Spell?> GetSpellByNameAsync(string spellName)
         {
-            return await _dbContext.Set<Spell>().AnyAsync(spell => spell.Name == spellName);
+            return await _dbContext.Set<Spell>().FirstOrDefaultAsync(spell => spell.Name == spellName);
         }
     }
 }

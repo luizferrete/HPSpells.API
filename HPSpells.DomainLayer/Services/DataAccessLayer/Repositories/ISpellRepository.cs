@@ -9,6 +9,6 @@ namespace HPSpells.DomainLayer.Services.DataAccessLayer.Repositories
 {
     public interface ISpellRepository : IRepository<Spell>
     {
-        Task<bool> ExistsSpellAsync(string spellName);
+        Task<Spell?> GetSpellByNameAsync(string spellName);
     }
 }

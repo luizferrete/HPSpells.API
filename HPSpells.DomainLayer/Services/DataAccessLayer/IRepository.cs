@@ -21,6 +21,5 @@ namespace HPSpells.DomainLayer.Services.DataAccessLayer
 
         Task<bool> ExistsAsync<TKeyProp>(TKeyProp key);
 
-        Task UpsertAsync(T model, bool autoDetectChangesEnabled = false);
     }
 }

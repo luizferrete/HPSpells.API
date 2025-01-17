@@ -75,21 +75,5 @@ namespace HPSpells.DataAccessLayer.EF.Base
         {
             return await _dbContext.Set<T>().AnyAsync(e => e.Id.Equals(key));
         }
-
-        public virtual async Task UpsertAsync(T model, bool autoDetectChangesEnabled = false)
-        {
-            if (model == null)
-                return;
-
-            bool exists = await ExistsAsync(model.Id);
-            if (exists)
-            {
-                await UpdateAsync(model, autoDetectChangesEnabled);
-            }
-            else
-            {
-                await InsertAsync(model, autoDetectChangesEnabled);
-            }
-        }
     }
 }
