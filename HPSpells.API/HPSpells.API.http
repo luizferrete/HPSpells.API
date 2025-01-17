@@ -1,0 +1,16 @@
+@HPSpells.API_HostAddress = https://localhost:44386/api/v1.0
+
+GET {{HPSpells.API_HostAddress}}/spell
+Accept: application/json
+
+
+###
+
+POST {{HPSpells.API_HostAddress}}/spell
+Content-Type: application/json
+Accept: application/json
+
+{
+  "spell": "Muffliato",
+  "use": "Keeps others nearby from overhearing conversations"
+}
