@@ -18,3 +18,4 @@ You can run the project by doing a simple restore and run. You also need to run 
 ## Project Architecture Overview
 
 This solution implements a **Clean Architecture** approach with a focus on separation of concerns. Each layer is independent and easy to modify, with a structure that supports scalability for future growth and changes. 
+This project is responsible for upserting the data sent by the worker to the database, and also to get the data to show in the VueJS front end.
